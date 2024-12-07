@@ -1,0 +1,20 @@
+{
+  "name": "generic-api-framework",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.49.0",
+    "@types/node": "^22.10.1",
+    "pino-pretty": "^13.0.0"
+  },
+  "dependencies": {
+    "@types/pino": "^7.0.4",
+    "pino": "^9.5.0",
+    "pino-http": "^10.3.0"
+  }
+}
