@@ -1,27 +1,27 @@
-import { BaseApi } from './baseApi';
+import BaseApi  from './baseApi';
 
 export class UserApi extends BaseApi {
-  async getUser(userId: string) {
-    return this.get(`/users/${userId}`);
+  async getUser(userId: number) {
+    return this.get(`/api/users/${userId}`);
   }
 
   async createUser(userData: any) {
-    return this.post('/users', userData);
+    return this.post('/api/users', userData);
   }
 
   async updateUser(userId: string, userData: any) {
-    return this.put(`/users/${userId}`, userData);
+    return this.put(`/api/users/${userId}`);
   }
 
   async deleteUser(userId: string) {
-    return this.delete(`/users/${userId}`);
+    return this.delete(`/api/users/${userId}`);
   }
 
   async listUsers(page: number) {
-    return this.get(`/users?page=${page}`);
+    return this.get(`/api/users?page=${page}`);
   }
 
   async register(username: string, email: string, password: string) {
-    return this.post('/register', { username, email, password });
+    return this.post('/api/register', { username, email, password });
   }
 }

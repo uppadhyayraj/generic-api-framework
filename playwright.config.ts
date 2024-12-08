@@ -1,12 +1,14 @@
-import { defineConfig } from '@playwright/test';
+import { PlaywrightTestConfig } from '@playwright/test';
 
-export default defineConfig({
-  testDir: './tests',
-  timeout: 30000,
-  use: {
-    baseURL: 'https://reqres.in/api',
-    extraHTTPHeaders: {
-      'Content-Type': 'application/json',
+const config: PlaywrightTestConfig = {
+    testDir: './tests',
+    timeout: 30000,
+    use: {
+      baseURL: 'https://reqres.in',
+      extraHTTPHeaders: {
+        'Content-Type': 'application/json',
+      },
     },
-  },
-});
+};
+
+export default config;

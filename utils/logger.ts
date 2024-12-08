@@ -7,7 +7,18 @@ const logger = pino({
     target: 'pino-pretty',
     options: {
       destination: 1, // 1 is stdout
-      colorize: true
+      colorize: true,
+      levelFirst: true,
+      messageFormat: '{msg}',
+      ignore: 'pid,hostname',
+      customLevels: {
+        error: 50,
+        warn: 40,
+        info: 30,
+        debug: 20,
+        trace: 10,
+      },
+      customColors: 'error:red,warn:yellow,info:green,debug:blue,trace:magenta', // Custom colors for log levels
     }
   }
 });

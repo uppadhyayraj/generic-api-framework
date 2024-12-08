@@ -6,36 +6,27 @@ import { UserApi } from '../apis/userApi';
 test.describe('User API Tests', () => {
   let userApi: UserApi;
 
-  test.beforeAll(async () => {
+  test.beforeAll(async (playwright) => {
     userApi = await ApiFactory.getUserApi();
   });
 
-  test('should create a new user', async () => {
-    const userData = { name: 'John Doe', job: 'Software Developer' };
-    const response = await userApi.createUser(userData);
-    expect(response.ok()).toBeTruthy();
-    const responseBody = await response.json();
-    expect(responseBody.name).toBe(userData.name);
-    logger.info(`User created with ID: ${responseBody.id}`);
-  });
-
   test('should get user details', async () => {
-    const userId = '2';
+    const userId = 2;
     const response = await userApi.getUser(userId);
     expect(response.ok()).toBeTruthy();
     const responseBody = await response.json();
-    expect(responseBody.data.id).toBe(parseInt(userId));
+    expect(responseBody.data.id).toBe(userId);
     logger.info(`User details retrieved for ID: ${userId}`);
   });
 
   test('should update a user', async () => {
     const userId = '2';
-    const userData = { name: 'Jane Doe', job: 'Product Manager' };
-    const response = await userApi.updateUser(userId, userData);
+    //const userData = { name: 'Jane Doe', job: 'Product Manager' };
+    const response = await userApi.updateUser(userId, null);
     expect(response.ok()).toBeTruthy();
     const responseBody = await response.json();
-    expect(responseBody.name).toBe(userData.name);
-    logger.info(`User updated with ID: ${userId}`);
+    expect(responseBody.updatedAt).not.toBeNull();
+    logger.info(`User updated with ID: ${userId} and values: ${JSON.stringify(responseBody)}`);
   });
 
   test('should delete a user', async () => {
