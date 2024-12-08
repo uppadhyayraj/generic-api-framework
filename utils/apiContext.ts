@@ -1,10 +1,10 @@
-import { request, APIRequestContext, APIRequest, PlaywrightTestArgs} from '@playwright/test';
+import { request, APIRequestContext } from '@playwright/test';
 import config from '../playwright.config';
 
 class ApiContext {
   private static instance: APIRequestContext;
 
-  private constructor() {}
+  private constructor() { }
 
   public static async getInstance(): Promise<APIRequestContext> {
     if (!ApiContext.instance) {

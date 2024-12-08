@@ -10,7 +10,7 @@ test.describe('User API Tests', () => {
     userApi = await ApiFactory.getUserApi();
   });
 
-  test('should get user details', async () => {
+  test('Should get user details with given userId', async () => {
     const userId = 2;
     const response = await userApi.getUser(userId);
     expect(response.ok()).toBeTruthy();
@@ -19,7 +19,7 @@ test.describe('User API Tests', () => {
     logger.info(`User details retrieved for ID: ${userId}`);
   });
 
-  test('should update a user', async () => {
+  test('Should update a user with given userId', async () => {
     const userId = '2';
     //const userData = { name: 'Jane Doe', job: 'Product Manager' };
     const response = await userApi.updateUser(userId, null);
@@ -29,14 +29,14 @@ test.describe('User API Tests', () => {
     logger.info(`User updated with ID: ${userId} and values: ${JSON.stringify(responseBody)}`);
   });
 
-  test('should delete a user', async () => {
+  test('Should delete a user with given userId', async () => {
     const userId = '2';
     const response = await userApi.deleteUser(userId);
     expect(response.status()).toBe(204);
     logger.info(`User deleted with ID: ${userId}`);
   });
 
-  test('should list users', async () => {
+  test('Should list users', async () => {
     const page = 2;
     const response = await userApi.listUsers(page);
     expect(response.ok()).toBeTruthy();
